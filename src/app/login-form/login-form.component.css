@@ -1,0 +1,11 @@
+.formCont, .LoginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formCont{
+    min-width: 20rem;
+}
+.formField{
+    min-width: 18rem;
+}

@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-content class="formCont">
+      <h1>Login</h1>
+<form class="LoginForm" #form="ngForm">
+    <mat-form-field class="formField">
+      <mat-label class="email-lable">Email</mat-label>
+      <input matInput type="email" name="email" required placeholder="Ex. pat@example.com" ngModel>
+      <mat-error>Enter Your Email</mat-error>
+    </mat-form-field>
+    <mat-form-field class="formField">
+      <mat-label class="password-lable">Password</mat-label>
+      <input matInput type="password" name="password" required ngModel>
+      <mat-error>Enter The password</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="loginForm(form.form)">Login</button>
+  </form>
+</mat-card-content>
+</mat-card>
