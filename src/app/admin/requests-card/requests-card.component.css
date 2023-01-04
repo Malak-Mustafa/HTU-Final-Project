@@ -1,0 +1,17 @@
+.cardCont{
+    /* background-color: gainsboro; */
+    padding: 1rem;
+}
+.RequestCard{
+    max-width: 50%;
+    margin: auto;
+    margin-top: 1rem;
+}
+.logo{
+    max-width: 100px;
+}
+.cardHead{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
