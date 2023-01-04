@@ -1,0 +1,45 @@
+<ng-container class="SecCont">
+  <section class="HBS">
+    <h1>Sectors Table</h1>
+    <button mat-flat-button color="primary" (click)="addSector()">Add sector</button>
+  </section>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- SectorName Column -->
+    <ng-container matColumnDef="SectorName">
+      <th mat-header-cell *matHeaderCellDef> SectorName </th>
+      <td mat-cell *matCellDef="let element"> {{element.SectorName}} </td>
+    </ng-container>
+  
+    <!-- SectorLogo Column -->
+    <ng-container matColumnDef="SectorLogo">
+      <th mat-header-cell *matHeaderCellDef> SectorLogo </th>
+      <td mat-cell *matCellDef="let element"><img class="logo" src="{{element.SectorLogo}}" alt="">  </td>
+    </ng-container>
+  
+    <!-- DesignColor Column -->
+    <ng-container matColumnDef="DesignColor">
+      <th mat-header-cell *matHeaderCellDef> DesignColor </th>
+      <td mat-cell class="colortd" *matCellDef="let element"> 
+        <mat-icon class="colorIcon"  fontIcon="water_drop" color="primary" [ngStyle]="{'color': element.DesignColor}"></mat-icon>
+         </td>
+    </ng-container>
+  <!-- Operations Column -->
+  <ng-container matColumnDef="Operations">
+    <th mat-header-cell *matHeaderCellDef> Operations </th>
+    <td mat-cell *matCellDef="let element"> 
+     <button mat-icon-button (click)="editSector()"><mat-icon   fontIcon="edit" color="primary" ></mat-icon></button> 
+     <button  mat-icon-button (click)="deleteSector()"> <mat-icon   fontIcon="delete" color="primary"></mat-icon></button>
+       </td>
+  </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</ng-container>

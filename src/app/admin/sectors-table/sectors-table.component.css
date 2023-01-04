@@ -1,0 +1,18 @@
+/* .SecCont{
+   
+
+} */
+.HBSec{
+    display: flex;
+justify-content: space-between;
+}
+.logo{
+    max-width: 100px;
+}
+.colortd{
+   font-size: 30px; 
+}
+.colorIcon{
+    
+    font-size: 30px;
+}
