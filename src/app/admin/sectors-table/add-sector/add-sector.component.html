@@ -1,0 +1,22 @@
+<section class="formSection">
+    <mat-card>
+        <mat-card-content class="formCont">
+    <h1>Add Sector</h1>
+<form class="addSectorForm" [formGroup]="addSectorForm" (ngSubmit)="onSubmit()">
+    <mat-form-field >
+        <mat-label for="name">Name</mat-label>
+        <input matInput formControlName="sectorName" placeholder="Sector name">
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label for="SectorLogo">SectorLogo</mat-label>
+        <input matInput formControlName="sectorLogo" placeholder="Sector Logo">
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label for="SectorDesignColor">SectorDesignColor</mat-label>
+        <input matInput type="color" formControlName="sectorDesignColor" placeholder="Sector Design Color">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (submit)="onSubmit">Submit</button>
+</form>
+        </mat-card-content>
+    </mat-card>
+</section>
