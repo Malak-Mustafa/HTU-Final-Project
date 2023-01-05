@@ -15,6 +15,8 @@ import { AddSectorComponent } from './admin/sectors-table/add-sector/add-sector.
 import { AngularFireModule} from '@angular/fire/compat';
 import { AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
+import { HomePageComponent } from './home-page/home-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,9 @@ import { environment } from 'src/environments/environment';
     SectorsTableComponent,
     StartupsTableComponent,
     RequestsCardComponent,
-    AddSectorComponent
+    AddSectorComponent,
+    HomePageComponent,
+    
   ],
   imports: [
     BrowserModule,
