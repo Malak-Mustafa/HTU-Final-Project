@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="container">
+  <h1>Login</h1>
+  <form [formGroup]="form" class="loginForm" (ngSubmit)="submit()">
+    <mat-form-field class="formField">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" formControlName="email" />
+      <mat-error *ngIf="email?.hasError('required')"
+        >Email is required</mat-error
+      >
+      <mat-error *ngIf="email?.hasError('email')"
+        >Email format is incorrect</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="formField">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="password?.hasError('required')"
+        >Password is required</mat-error
+      >
+      <mat-error *ngIf="password?.hasError('minLength')"
+        >Password must be at least 8 characters</mat-error
+      >
+    </mat-form-field>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="!form.valid"
+    >
+      Login
+    </button>
+  </form>
+</div>
