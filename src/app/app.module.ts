@@ -14,8 +14,14 @@ import { RequestsCardComponent } from './admin/requests-card/requests-card.compo
 import { AddSectorComponent } from './admin/sectors-table/add-sector/add-sector.component';
 import { AngularFireModule} from '@angular/fire/compat';
 import { AngularFirestoreModule} from '@angular/fire/compat/firestore';
-import { environment } from 'src/environments/environment';
+
 import { HomePageComponent } from './home-page/home-page.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+
 
 @NgModule({
   declarations: [
@@ -38,7 +44,11 @@ import { HomePageComponent } from './home-page/home-page.component';
     HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     AngularFirestoreModule,
+    // provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideAuth(() => getAuth()),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
