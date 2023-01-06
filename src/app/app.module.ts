@@ -27,11 +27,11 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
   declarations: [
     AppComponent,
     LoginFormComponent,
-    DashboardComponent,
-    SectorsTableComponent,
-    StartupsTableComponent,
-    RequestsCardComponent,
-    AddSectorComponent,
+    //DashboardComponent,
+   // SectorsTableComponent,
+    // StartupsTableComponent,
+    // RequestsCardComponent,
+    //AddSectorComponent,
     HomePageComponent,
     
   ],

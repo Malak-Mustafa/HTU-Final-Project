@@ -11,7 +11,8 @@ const routes: Routes = [
   // {path:'dashboard',component:DashboardComponent } ,
   // {path:'addSector',component:AddSectorComponent},
   {path:'', component:HomePageComponent,pathMatch:'full'},
-  {path: 'auth', loadChildren:()=>import('./auth/auth.module').then((m)=>m.AuthModule)}
+  {path: 'auth', loadChildren:()=>import('./auth/auth.module').then((m)=>m.AuthModule)},
+  {path: 'admin', loadChildren:()=>import('./admin/admin.module').then((m)=>m.AdminModule)}
   
 ];
 
