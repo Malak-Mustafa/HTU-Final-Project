@@ -28,7 +28,7 @@ export class NotLoggedInGuard implements CanActivate {
         if (!value) return true;
         else {
           //navigate to admin
-          this.router.navigate(['admin/']);
+          this.router.navigate(['admin/dashboard']);
 
           return false;
         }
