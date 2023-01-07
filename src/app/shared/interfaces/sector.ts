@@ -1,5 +1,7 @@
 export interface sector {
+    id?: string,
+    userId: string,
     SectorName: string;
     SectorLogo: string;
-    DesignColor:string;
+    sectorDesignColor:string;
 }
