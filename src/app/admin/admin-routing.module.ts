@@ -5,7 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent } ,
- 
+  {path: 'sector', loadChildren:()=>import('./sectors-table/sectors.module').then((m)=>m.SectorsModule),}
 ];
 
 @NgModule({
