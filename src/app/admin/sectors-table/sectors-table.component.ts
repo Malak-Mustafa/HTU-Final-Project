@@ -1,15 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { of, switchMap } from 'rxjs';
+import { sector } from 'src/app/shared/interfaces/sector';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { SectorsFirebaseServiceService } from 'src/app/shared/services/storege/sectors-firebase-service.service';
 
 @Component({
   selector: 'app-sectors-table',
   templateUrl: './sectors-table.component.html',
   styleUrls: ['./sectors-table.component.css']
 })
-export class SectorsTableComponent {
-  constructor(private router:Router){}
+export class SectorsTableComponent implements OnInit {
+  constructor(private router:Router, private authService:AuthService, private sectorsService:SectorsFirebaseServiceService){}
   displayedColumns: string[] = ['id', 'SectorName', 'SectorLogo', 'DesignColor' , 'Operations'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource<sector>;
+
+  
+
+  ngOnInit(): void{
+    this.authService.userState$
+      .pipe(
+        switchMap( (val) => {
+
+          if(val){
+            return this.sectorsService.getSectors(); 
+        }
+        else {
+          return of(null);
+        }
+    }),
+
+    ).subscribe((response)=> {
+      console.log(response);
+      if(response){
+        this.dataSource.data = response;
+      }
+    })
+  }
+
   editSector(){
     console.log(this.dataSource);
   }
@@ -22,23 +51,3 @@ export class SectorsTableComponent {
 
   }
 }
-export interface PeriodicElement {
-  SectorName: string;
-  id: number;
-  SectorLogo: string;
-  DesignColor: string;
-
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1,
-     SectorName: 'test',
-      SectorLogo: "https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/4a14e7b2de7f6eaf5a6c98cb8c00b8de.png",
-       DesignColor: '#FF6E6D',
-      },
-
-];
-
-/**
- * @title Basic use of `<table mat-table>`
- */
