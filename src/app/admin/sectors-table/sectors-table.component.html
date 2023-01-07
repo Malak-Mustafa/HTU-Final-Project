@@ -1,7 +1,7 @@
 <ng-container class="SecCont">
   <section class="HBS">
     <h1>Sectors Table</h1>
-    <button mat-flat-button color="primary" [routerLink]="['/admin/addSector']">Add sector</button>
+    <button mat-flat-button color="primary" [routerLink]="['/admin/sector/addSector']">Add sector</button>
   </section>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -28,7 +28,7 @@
     <ng-container matColumnDef="DesignColor">
       <th mat-header-cell *matHeaderCellDef> DesignColor </th>
       <td mat-cell class="colortd" *matCellDef="let element"> 
-        <mat-icon class="colorIcon"  fontIcon="water_drop" color="primary" [ngStyle]="{'color': element.DesignColor}"></mat-icon>
+        <mat-icon class="colorIcon"  fontIcon="water_drop" color="primary" [ngStyle]="{'color': element.sectorDesignColor}"></mat-icon>
          </td>
     </ng-container>
   <!-- Operations Column -->
