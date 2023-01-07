@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SectorsTableComponent } from './sectors-table/sectors-table.component';
 import { StartupsTableComponent } from './startups-table/startups-table.component';
 import { RequestsCardComponent } from './requests-card/requests-card.component';
-import { AddSectorComponent } from './sectors-table/add-sector/add-sector.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SectorsTableComponent,
     StartupsTableComponent,
     RequestsCardComponent,
-    AddSectorComponent,
   ],
   imports: [
     CommonModule,
