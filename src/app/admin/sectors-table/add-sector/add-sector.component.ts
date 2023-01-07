@@ -15,6 +15,15 @@ addSectorForm= new FormGroup({
 
 });
 
+get sectorName(){
+  return this.addSectorForm.get('sectorName')
+}
+get sectorLogo(){
+  return this.addSectorForm.get('sectorLogo')
+}
+get sectorDesignColor(){
+  return this.addSectorForm.get('sectorDesignColor')
+}
 onSubmit(){
   console.log(this.addSectorForm.value);
   
