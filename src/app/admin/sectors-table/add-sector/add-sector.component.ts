@@ -29,12 +29,10 @@ get sectorDesignColor(){
   return this.addSectorForm.get('sectorDesignColor')
 }
 onSubmit(){
-  console.log(this.addSectorForm.value);
 
   this.authService.userState$
   .pipe(
       switchMap((value) => {
-        console.log(value);
         
         if(value){
          return this.sectorService.addSector({

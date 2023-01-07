@@ -32,7 +32,6 @@ export class SectorsTableComponent implements OnInit {
     }),
 
     ).subscribe((response)=> {
-      console.log(response);
       if(response){
         this.dataSource.data = response;
       }
