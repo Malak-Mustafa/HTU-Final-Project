@@ -4,6 +4,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RequestsCardComponent } from './admin/requests-card/requests-card.component';
 import { AddSectorComponent } from './admin/sectors-table/add-sector/add-sector.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   // {path:'addSector',component:AddSectorComponent},
   {path:'', component:HomePageComponent,pathMatch:'full'},
   {path: 'auth', loadChildren:()=>import('./auth/auth.module').then((m)=>m.AuthModule)},
-  {path: 'admin', loadChildren:()=>import('./admin/admin.module').then((m)=>m.AdminModule)}
+  {path: 'admin', loadChildren:()=>import('./admin/admin.module').then((m)=>m.AdminModule),
+  canActivate:[AuthGuard]}
   
 ];
 
