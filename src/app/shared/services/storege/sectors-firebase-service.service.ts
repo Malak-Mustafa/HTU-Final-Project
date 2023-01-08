@@ -21,4 +21,16 @@ sectorsCollection!: AngularFirestoreCollection<sector>
   getSectors (): Observable <sector[]>{
     return this.sectorsCollection.valueChanges({"idField":'id'});
   }
+
+  getSector(id: string){
+    return this.sectorsCollection.doc<sector>(id).valueChanges();
+ }
+
+  updateSector(id:string, sector:sector){
+    let updatedSector= this.sectorsCollection?.doc<sector>(id).update({...sector});
+    return from(updatedSector)
+  }
+  deleteSector(id:string){
+    return this.sectorsCollection.doc<sector>(id).delete();
+  }
 }
