@@ -35,7 +35,7 @@
   <ng-container matColumnDef="Operations">
     <th mat-header-cell *matHeaderCellDef> Operations </th>
     <td mat-cell *matCellDef="let element"> 
-     <button mat-icon-button (click)="editSector()" [routerLink]="['/admin/sector/updateSector']"><mat-icon   fontIcon="edit" color="primary" ></mat-icon></button> 
+     <button mat-icon-button (click)="updateSector(element.id)" [routerLink]="['/admin/sector/updateSector']"><mat-icon   fontIcon="edit" color="primary" ></mat-icon></button> 
      <button  mat-icon-button (click)="deleteSector(element.id)"> <mat-icon   fontIcon="delete" color="primary"></mat-icon></button>
        </td>
   </ng-container>

@@ -9,60 +9,65 @@ import { SectorsFirebaseServiceService } from 'src/app/shared/services/storege/s
 @Component({
   selector: 'app-sectors-table',
   templateUrl: './sectors-table.component.html',
-  styleUrls: ['./sectors-table.component.css']
+  styleUrls: ['./sectors-table.component.css'],
 })
 export class SectorsTableComponent implements OnInit {
-  constructor(private router:Router, private authService:AuthService, private sectorsService:SectorsFirebaseServiceService){}
-  displayedColumns: string[] = ['id', 'SectorName', 'SectorLogo', 'DesignColor' , 'Operations'];
-  dataSource = new MatTableDataSource<sector>;
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private sectorsService: SectorsFirebaseServiceService
+  ) {}
+  displayedColumns: string[] = [
+    'id',
+    'SectorName',
+    'SectorLogo',
+    'DesignColor',
+    'Operations',
+  ];
+  dataSource = new MatTableDataSource<sector>();
 
-  
-
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.authService.userState$
       .pipe(
-        switchMap( (val) => {
-
-          if(val){
-            return this.sectorsService.getSectors(); 
+        switchMap((val) => {
+          if (val) {
+            return this.sectorsService.getSectors();
+          } else {
+            return of(null);
+          }
+        })
+      )
+      .subscribe((response) => {
+        if (response) {
+          this.dataSource.data = response;
         }
-        else {
-          return of(null);
-        }
-    }),
-
-    ).subscribe((response)=> {
-      if(response){
-        this.dataSource.data = response;
-      }
-    })
+      });
   }
 
-  editSector(){
+  updateSector(id: string) {
     console.log(this.dataSource);
+  
   }
-  deleteSector(id:string){
+  deleteSector(id: string) {
     console.log(this.dataSource);
     this.authService.userState$
-    .pipe(
+      .pipe(
         switchMap((value) => {
-          
-          if(value){
-           return this.sectorsService.deleteSector(id)
+          if (value) {
+            return this.sectorsService.deleteSector(id);
+          } else {
+            return of(null);
           }
-            else {
-              return of(null);
-            }
         })
-    ).subscribe((val)=> {
-      if(!val){
-        alert('sector deleted!');
-      }
-    })
+      )
+      .subscribe((val) => {
+        if (!val) {
+          alert('sector deleted!');
+        }
+      });
   }
-  addSector(){
+  addSector() {
     console.log(this.dataSource);
     this.router.navigate(['../addSector']);
-
   }
 }
