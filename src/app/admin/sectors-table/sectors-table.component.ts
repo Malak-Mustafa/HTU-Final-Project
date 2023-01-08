@@ -41,8 +41,24 @@ export class SectorsTableComponent implements OnInit {
   editSector(){
     console.log(this.dataSource);
   }
-  deleteSector(){
+  deleteSector(id:string){
     console.log(this.dataSource);
+    this.authService.userState$
+    .pipe(
+        switchMap((value) => {
+          
+          if(value){
+           return this.sectorsService.deleteSector(id)
+          }
+            else {
+              return of(null);
+            }
+        })
+    ).subscribe((val)=> {
+      if(!val){
+        alert('sector deleted!');
+      }
+    })
   }
   addSector(){
     console.log(this.dataSource);
