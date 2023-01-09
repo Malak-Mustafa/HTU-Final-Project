@@ -9,7 +9,7 @@
     <!-- Position Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> id </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td mat-cell *matCellDef="let element" [id]="element.id" > {{element.id}} </td>
     </ng-container>
   
     <!-- SectorName Column -->
