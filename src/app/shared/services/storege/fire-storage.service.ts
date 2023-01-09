@@ -9,8 +9,8 @@ export class FireStorageService {
 
   constructor(private fireStorage:AngularFireStorage) { }
 
-  uploadFile(file:File){
-    const filePath = `sectors/${file.name}`
+  uploadFile(file:File , path:string){
+    const filePath = `${path}/${file.name}`
     const storageRef = this.fireStorage.ref(filePath);
    return storageRef.put(file).snapshotChanges().pipe(
       last(),switchMap((val)=>{

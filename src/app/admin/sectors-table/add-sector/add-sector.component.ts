@@ -13,6 +13,7 @@ import { SectorsFirebaseServiceService } from 'src/app/shared/services/storege/s
 })
 export class AddSectorComponent {
   downloadUrl? :string;
+  path:string="sectors";
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -63,7 +64,7 @@ export class AddSectorComponent {
     console.log(event);
     let file = (event.target as HTMLInputElement)?.files?.[0];
     if(file){
-      this.storage.uploadFile(file).subscribe((val)=>{
+      this.storage.uploadFile(file,this.path).subscribe((val)=>{
         this.downloadUrl=val;
         
       })
