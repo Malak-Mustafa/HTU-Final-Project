@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { startup } from 'src/app/shared/interfaces/startup';
+import { MatTableDataSource } from '@angular/material/table';
+import { StartupFirebaseService } from 'src/app/shared/services/storege/startup-firebase.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { Router } from '@angular/router';
+import { of, switchMap } from 'rxjs';
 @Component({
   selector: 'app-startups-table',
   templateUrl: './startups-table.component.html',
@@ -13,11 +19,34 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ],
 })
 export class StartupsTableComponent {
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource<startup>();
   columnsToDisplay = [ 'id',
   'StartupName',];
   columnsToDisplayWithExpand = [...this.columnsToDisplay,'Operations' ,'expand',];
-  expandedElement: PeriodicElement | null | undefined;
+  expandedElement:  null | undefined;
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private startupService: StartupFirebaseService
+  ) {}
+  ngOnInit(): void {
+    this.authService.userState$
+      .pipe(
+        switchMap((val) => {
+          if (val) {
+            return this.startupService.getStartups();
+          } else {
+            return of(null);
+          }
+        })
+      )
+      .subscribe((response) => {
+        if (response) {
+          this.dataSource.data = response;
+        }
+      });
+  }
+
 
   editStartup() {
     console.log(this.dataSource);
@@ -27,45 +56,8 @@ export class StartupsTableComponent {
   }
   addStartup() {
     console.log(this.dataSource);
+    //this.router.navigate(['../addSector']);
   }
 }
-export interface PeriodicElement {
-  StartupName: string;
-  id?: number;
-  StartupLogo: string;
-  StartupCity: string;
-  Sectors: string;
-  FounderName: string;
-  NumberOfEmployees: number;
-  YearOfEstablishment: number;
-  URL: string;
-  EmailAddress: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    id: 1,
-    StartupName: 'test',
-    StartupLogo:
-      'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/4a14e7b2de7f6eaf5a6c98cb8c00b8de.png',
-    StartupCity: 'Amman',
-    Sectors: 'IT',
-    FounderName: 'abood',
-    NumberOfEmployees: 100,
-    YearOfEstablishment: 2000,
-    URL: 'https//abood',
-    EmailAddress: 'abood@abood',
-  }, {
-    id: 2,
-    StartupName: 'test2',
-    StartupLogo:
-      'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/4a14e7b2de7f6eaf5a6c98cb8c00b8de.png',
-    StartupCity: 'Amman',
-    Sectors: 'IT',
-    FounderName: 'abood',
-    NumberOfEmployees: 100,
-    YearOfEstablishment: 2000,
-    URL: 'https//abood',
-    EmailAddress: 'abood@abood',
-  },
-];
+
