@@ -1,6 +1,6 @@
 <section class="HBS">
-  <h1>Sectors Table</h1>
-  <button mat-flat-button color="primary" [routerLink]="['/admin/startup/addStartup']">Add sector</button>
+  <h1>Startups Table</h1>
+  <button mat-flat-button color="primary" [routerLink]="['/admin/startup/addStartup']">Add startup</button>
 </section>
 <table mat-table
        [dataSource]="dataSource" multiTemplateDataRows
@@ -54,8 +54,7 @@
   <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
   <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
       class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
+      >
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>
