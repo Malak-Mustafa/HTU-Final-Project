@@ -4,10 +4,10 @@ export interface startup{
   userId: string,
   StartupLogo: string;
   StartupCity: string;
-  Sectors: string;
+  Sector: string;
   FounderName: string;
-  NumberOfEmployees: number;
-  YearOfEstablishment: number;
+  NumberOfEmployees: string;
+  YearOfEstablishment: string;
   URL: string;
   EmailAddress: string;
 }
