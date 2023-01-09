@@ -68,6 +68,6 @@ export class SectorsTableComponent implements OnInit {
   }
   addSector() {
     console.log(this.dataSource);
-    this.router.navigate(['../addSector']);
+    //this.router.navigate(['../addSector']);
   }
 }
