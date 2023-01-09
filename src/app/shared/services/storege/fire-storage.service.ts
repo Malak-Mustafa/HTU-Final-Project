@@ -12,7 +12,7 @@ export class FireStorageService {
   uploadFile(file:File){
     const filePath = `sectors/${file.name}`
     const storageRef = this.fireStorage.ref(filePath);
-    storageRef.put(file).snapshotChanges().pipe(
+   return storageRef.put(file).snapshotChanges().pipe(
       last(),switchMap((val)=>{
         return storageRef.getDownloadURL()
       })
