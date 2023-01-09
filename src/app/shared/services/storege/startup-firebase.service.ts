@@ -19,4 +19,7 @@ export class StartupFirebaseService {
   getStartups (): Observable <startup[]>{
     return this.startupsCollection.valueChanges({"idField":'id'});
   }
+  deleteStartup(id:string){
+    return this.startupsCollection.doc<startup>(id).delete();
+  }
 }

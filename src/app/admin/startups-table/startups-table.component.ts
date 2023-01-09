@@ -51,8 +51,24 @@ export class StartupsTableComponent {
   editStartup() {
     console.log(this.dataSource);
   }
-  deleteStartup() {
+  deleteStartup(id:string) {
     console.log(this.dataSource);
+   
+    this.authService.userState$
+      .pipe(
+        switchMap((value) => {
+          if (value) {
+            return this.startupService.deleteStartup(id);
+          } else {
+            return of(null);
+          }
+        })
+      )
+      .subscribe((val) => {
+        if (!val) {
+          alert('startup deleted!');
+        }
+      });
   }
   addStartup() {
     console.log(this.dataSource);
