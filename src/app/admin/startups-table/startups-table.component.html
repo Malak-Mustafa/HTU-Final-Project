@@ -1,6 +1,6 @@
 <section class="HBS">
   <h1>Sectors Table</h1>
-  <button mat-flat-button color="primary" (click)="addStartup()">Add sector</button>
+  <button mat-flat-button color="primary" [routerLink]="['/admin/startup/addStartup']">Add sector</button>
 </section>
 <table mat-table
        [dataSource]="dataSource" multiTemplateDataRows
