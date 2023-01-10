@@ -2,7 +2,7 @@
 <section class="formSection">
     <mat-card>
       <mat-card-content class="formCont">
-        <h1>Add Sector</h1>
+        <h1>Add Startup</h1>
         <form
           class="addSectorForm"
           [formGroup]="addStartupForm"
@@ -31,15 +31,14 @@
               >StartupCity is required</mat-error
             >
           </mat-form-field>
-
           <mat-form-field>
-            <mat-label for="Sector">Sector</mat-label>
-            <input
-              matInput
-              formControlName="Sector"
-              placeholder="Sector"
-            />
-            <mat-error *ngIf="Sector?.hasError('required')"
+          <mat-label>Sector</mat-label>
+          <select matNativeControl placeholder="Sector" formControlName="SectorID" required>
+            <option *ngFor="let sector of sectors" [value]="sector.id">
+              {{sector.SectorName}}
+            </option>
+          </select>
+            <mat-error *ngIf="SectorID?.hasError('required')"
               >Sector is required</mat-error
             >
           </mat-form-field>

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FireStorageService } from 'src/app/shared/services/storege/fire-storage.service';
+import { SectorsFirebaseServiceService } from 'src/app/shared/services/storege/sectors-firebase-service.service';
 import { StartupFirebaseService } from 'src/app/shared/services/storege/startup-firebase.service';
 
 @Component({
@@ -11,20 +12,40 @@ import { StartupFirebaseService } from 'src/app/shared/services/storege/startup-
   templateUrl: './add-startup.component.html',
   styleUrls: ['./add-startup.component.css']
 })
-export class AddStartupComponent {
+export class AddStartupComponent implements OnInit {
+  
+ sectors?: Array <any>;
+  ngOnInit(): void {
+    this.authService.userState$
+      .pipe(
+        switchMap((val) => {
+          if (val) {
+            return this.sectorsService.getSectors();
+          } else {
+            return of(null);
+          }
+        })
+      )
+      .subscribe((response) => {
+        if (response) {
+            this.sectors=response;         
+        }
+      });
+  }
   downloadUrl? :string;
   path:string="startups";
   constructor(
     private router: Router,
     private authService: AuthService,
     private startupsService: StartupFirebaseService,
-    private storage: FireStorageService
+    private storage: FireStorageService,
+    private sectorsService: SectorsFirebaseServiceService
   ) {}
   addStartupForm = new FormGroup({
     StartupName: new FormControl('', [Validators.required]),
     //StartupLogo: new FormControl(null,[Validators.required]),
     StartupCity: new FormControl('', [Validators.required]),
-    Sector: new FormControl('', [Validators.required]),
+    SectorID: new FormControl('', [Validators.required]),
     FounderName: new FormControl('',[Validators.required]),
     NumberOfEmployees: new FormControl('',[Validators.required]),
     YearOfEstablishment: new FormControl('',[Validators.required]),
@@ -41,8 +62,8 @@ export class AddStartupComponent {
   get StartupCity(){
     return this.addStartupForm.get('StartupCity')
   }
-  get Sector() {
-    return this.addStartupForm.get('Sectors');
+  get SectorID() {
+    return this.addStartupForm.get('SectorID');
   }
   get FounderName() {
     return this.addStartupForm.get('FounderName');
@@ -69,7 +90,7 @@ export class AddStartupComponent {
               userId: value.uid,
               StartupLogo:this.downloadUrl+ '',
               StartupCity: this.StartupCity?.value+ '',
-              Sector: this.Sector?.value+ '',
+              SectorID: this.SectorID?.value+ '',
               FounderName: this.FounderName?.value+ '',
               NumberOfEmployees: this.NumberOfEmployees!.value!,
               YearOfEstablishment: this.YearOfEstablishment!.value!,

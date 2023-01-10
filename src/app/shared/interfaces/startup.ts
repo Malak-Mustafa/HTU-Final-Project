@@ -4,7 +4,7 @@ export interface startup{
   userId: string,
   StartupLogo: string;
   StartupCity: string;
-  Sector: string;
+  SectorID: string;
   FounderName: string;
   NumberOfEmployees: string;
   YearOfEstablishment: string;
