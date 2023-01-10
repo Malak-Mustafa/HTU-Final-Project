@@ -1,6 +1,6 @@
 export interface startup{
   StartupName: string;
-  id?: number;
+  id?: string;
   userId: string,
   StartupLogo: string;
   StartupCity: string;
