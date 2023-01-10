@@ -22,4 +22,12 @@ export class StartupFirebaseService {
   deleteStartup(id:string){
     return this.startupsCollection.doc<startup>(id).delete();
   }
+  getStartup(id: string){
+    return this.startupsCollection.doc<startup>(id).valueChanges();
+ }
+
+  updateStartup(id:string, startup:startup){
+    let updatedStartup= this.startupsCollection?.doc<startup>(id).update({...startup});
+    return from(updatedStartup)
+  }
 }
