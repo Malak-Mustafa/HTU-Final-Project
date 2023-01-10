@@ -13,7 +13,7 @@
   <ng-container matColumnDef="Operations">
     <th mat-header-cell *matHeaderCellDef>Operations</th>
     <td mat-cell *matCellDef="let element">
-      <button  mat-icon-button  (click)="editStartup()" [routerLink]="['/admin/startup/updateStartup']">
+      <button  mat-icon-button  (click)="editStartup()" [routerLink]="['/admin/startup/updateStartup']" [queryParams]="{id: element.id}">
         <mat-icon fontIcon="edit" color="primary"></mat-icon>
       </button>
       <button  mat-icon-button aria-label="expand row" (click)="deleteStartup(element.id)">

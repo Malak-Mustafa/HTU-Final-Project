@@ -1,1 +1,129 @@
-<p>update-startup works!</p>
+<section class="formSection">
+    <mat-card>
+      <mat-card-content class="formCont">
+        <h1>Update Startup</h1>
+        <form
+          class="UpdateStartupForm"
+          [formGroup]="UpdateStartupForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <mat-form-field>
+            <mat-label for="StartupName">StartupName</mat-label>
+            <input
+              matInput
+              formControlName="StartupName"
+              placeholder="startup name"
+            />
+            <mat-error *ngIf="StartupName?.hasError('required')"
+              >startup Name is required</mat-error
+            >
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label for="StartupCity">StartupCity</mat-label>
+            <input
+              matInput
+              formControlName="StartupCity"
+              placeholder="StartupCity"
+            />
+            <mat-error *ngIf="StartupCity?.hasError('required')"
+              >StartupCity is required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+          <mat-label>Sector</mat-label>
+          <select matNativeControl placeholder="Sector" formControlName="SectorID" required>
+            <option *ngFor="let sector of sectors" [value]="sector.id">
+              {{sector.SectorName}}
+            </option>
+          </select>
+            <mat-error *ngIf="SectorID?.hasError('required')"
+              >Sector is required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="FounderName">FounderName</mat-label>
+            <input
+              matInput
+              formControlName="FounderName"
+              placeholder="FounderName"
+            />
+            <mat-error *ngIf="FounderName?.hasError('required')"
+              >FounderName is required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="NumberOfEmployees">NumberOfEmployees</mat-label>
+            <input
+              matInput
+              formControlName="NumberOfEmployees"
+              placeholder="NumberOfEmployees"
+             
+            />
+            <mat-error *ngIf="NumberOfEmployees?.hasError('required')"
+              >NumberOfEmployees is required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="YearOfEstablishment">YearOfEstablishment</mat-label>
+            <input
+              matInput
+              formControlName="YearOfEstablishment"
+              placeholder="YearOfEstablishment"
+             
+            />
+            <mat-error *ngIf="YearOfEstablishment?.hasError('required')"
+              >YearOfEstablishment is required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="URL">URL</mat-label>
+            <input
+              matInput
+              formControlName="URL"
+              placeholder="URL"
+            />
+            <mat-error *ngIf="URL?.hasError('required')"
+              >URL is required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="EmailAddress">EmailAddress</mat-label>
+            <input
+              matInput
+              formControlName="EmailAddress"
+              placeholder="EmailAddress"
+            />
+            <mat-error *ngIf="EmailAddress?.hasError('required')"
+              >EmailAddress is required</mat-error
+            >
+          </mat-form-field>
+          <div>
+            <label>SectorLogo</label>
+            <input
+              type="file"
+              accept="image/*"
+              (change)="upload($event)"
+              required
+            />
+          
+              <img
+                type="image"
+                [src]="downloadUrl"
+                
+              />
+             
+          </div>
+          <button
+            mat-raised-button
+            color="primary"
+            (submit)="(onSubmit)"
+            [disabled]="!UpdateStartupForm.valid"
+          >
+            Submit
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </section>
+  
