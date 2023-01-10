@@ -8,6 +8,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
 const Materials = [
   MatFormFieldModule,
   MatInputModule,
@@ -16,7 +17,8 @@ const Materials = [
   MatTabsModule,
   MatTableModule,
   MatIconModule,
-  MatDividerModule
+  MatDividerModule,
+  MatToolbarModule,
 ];
 @NgModule({
   declarations: [],
