@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { MatCardContent } from '@angular/material/card';
+import { Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { request } from 'src/app/shared/interfaces/request';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { RequestsFirebaseService } from 'src/app/shared/services/storege/requests-firebase.service';
 import { SectorsFirebaseServiceService } from 'src/app/shared/services/storege/sectors-firebase-service.service';
+import { StartupFirebaseService } from 'src/app/shared/services/storege/startup-firebase.service';
 @Component({
   selector: 'app-requests-card',
   templateUrl: './requests-card.component.html',
@@ -18,7 +19,10 @@ export class RequestsCardComponent {
   SectorName?: string;
 constructor(private authService: AuthService, 
 private sectorsService: SectorsFirebaseServiceService,
-private requestsService: RequestsFirebaseService,){}
+private requestsService: RequestsFirebaseService,
+private startupsService: StartupFirebaseService,
+private router: Router,
+){}
 ngOnInit(): void {
   this.authService.userState$
     .pipe(
@@ -68,10 +72,46 @@ getSectorsData(data:any){
       });
   }
 }
-addStartup(){
-  console.log("add");
-  
+addStartup(id:string){
+  for (let i = 0; i < this.requests!.length; i++) {
+    // console.log(this.requests![i]);
+    if(this.requests![i].id===id){
+    this.authService.userState$
+    .pipe(
+      switchMap((value) => {
+        if (value) {
+          return this.startupsService.addStartup({
+            StartupName:this.requests![i].StartupName!,
+            userId: value.uid,
+            StartupLogo:this.requests![i].StartupLogo,
+            StartupCity: this.requests![i].StartupCity,
+            SectorID: this.requests![i].SectorID,
+            FounderName:this.requests![i].FounderName,
+            NumberOfEmployees:this.requests![i].NumberOfEmployees!,
+            YearOfEstablishment:this.requests![i].YearOfEstablishment,
+            URL: this.requests![i].URL,
+            EmailAddress:this.requests![i].EmailAddress,
+          });
+        } else {
+          return of(null);
+        }
+      })
+    )
+    .subscribe((val) => {
+      if (!val) {
+        alert('cannot add startup');
+      }
+      else{
+
+        alert('request accepted');
+        this.deleteRequest(this.requests![i].id!)} 
+    });
+  this.router.navigate(['/admin/dashboard']);
+  }
+  }
 }
+  
+
 deleteRequest(id:string){
   this.authService.userState$
       .pipe(

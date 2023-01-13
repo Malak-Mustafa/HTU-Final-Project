@@ -15,7 +15,7 @@
     <mat-divider></mat-divider>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="primary" (click)="addStartup()">Approve</button>
+    <button mat-button color="primary" (click)="addStartup(request!.id!)">Approve</button>
     <button mat-button color="warn" (click)="deleteRequest(request!.id!)">Delete</button>
   </mat-card-actions>
 </mat-card>

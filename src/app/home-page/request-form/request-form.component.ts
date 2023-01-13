@@ -105,7 +105,7 @@ export class RequestFormComponent {
           alert('cannot add startup');
         }
       });
-    this.router.navigate(['/admin/dashboard']);
+    this.router.navigate(['/']);
   }
 
   upload(event: Event) {
