@@ -15,6 +15,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { RequestFormComponent } from './home-page/request-form/request-form.component';
+import { SectorContainerComponent } from './home-page/sector-container/sector-container.component';
+import { StartupCardComponent } from './home-page/startup-card/startup-card.component';
 
 
 
@@ -23,6 +25,8 @@ import { RequestFormComponent } from './home-page/request-form/request-form.comp
     AppComponent,
     HomePageComponent,
     RequestFormComponent,
+    SectorContainerComponent,
+    StartupCardComponent,
     
   ],
   imports: [
