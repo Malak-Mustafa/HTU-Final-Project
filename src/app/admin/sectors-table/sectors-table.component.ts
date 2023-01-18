@@ -18,7 +18,6 @@ export class SectorsTableComponent implements OnInit {
     private sectorsService: SectorsFirebaseServiceService
   ) {}
   displayedColumns: string[] = [
-    'id',
     'SectorName',
     'SectorLogo',
     'DesignColor',

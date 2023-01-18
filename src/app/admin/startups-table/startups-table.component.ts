@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { SectorsFirebaseServiceService } from 'src/app/shared/services/storege/sectors-firebase-service.service';
+import { DataSource } from '@angular/cdk/collections';
 @Component({
   selector: 'app-startups-table',
   templateUrl: './startups-table.component.html',
@@ -32,13 +33,13 @@ export class StartupsTableComponent {
   dataSource = new MatTableDataSource<startup>();
   SectorsData?: any;
   SectorName?: string;
-  columnsToDisplay = ['id', 'StartupName'];
+  columnsToDisplay = [ 'StartupName'];
   columnsToDisplayWithExpand = [
     ...this.columnsToDisplay,
     'Operations',
     'expand',
   ];
-  expandedElement: null | undefined;
+  expandedElement!:startup;
   constructor(
     private router: Router,
     private authService: AuthService,

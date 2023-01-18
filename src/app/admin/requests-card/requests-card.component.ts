@@ -38,7 +38,7 @@ ngOnInit(): void {
       if (response) {
         this.requests = response;
         this.getSectorsData(response)
-        console.log(this.requests);
+        //console.log(this.requests);
         
       }
     });

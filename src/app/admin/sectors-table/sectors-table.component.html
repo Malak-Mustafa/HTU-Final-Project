@@ -1,10 +1,10 @@
-<ng-container class="SecCont">
-  <section class="HBS">
-    <h1>Sectors Table</h1>
-    <button mat-flat-button color="primary" [routerLink]="['/admin/sector/addSector']">Add sector</button>
-  </section>
+<section class="HBSec">
+  <h1>Sectors Table</h1>
+  <button mat-flat-button color="primary" [routerLink]="['/admin/sector/addSector']">Add sector</button>
+</section>
+<div class="SecCont">
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="secT">
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
@@ -27,8 +27,9 @@
     <!-- DesignColor Column -->
     <ng-container matColumnDef="DesignColor">
       <th mat-header-cell *matHeaderCellDef> DesignColor </th>
-      <td mat-cell class="colortd" *matCellDef="let element"> 
-        <mat-icon class="colorIcon"  fontIcon="water_drop" color="primary" [ngStyle]="{'color': element.sectorDesignColor}"></mat-icon>
+      <td mat-cell class="colortd" *matCellDef="let element" [ngStyle]="{'color': element.sectorDesignColor}"> 
+        <!-- <mat-icon class="colorIcon"  fontIcon="water_drop" color="primary" [ngStyle]="{'color': element.sectorDesignColor}"></mat-icon> -->
+        <strong>{{element.sectorDesignColor}}</strong>
          </td>
     </ng-container>
   <!-- Operations Column -->
@@ -42,4 +43,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</ng-container>
+</div>
