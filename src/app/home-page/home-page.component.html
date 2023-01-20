@@ -1,7 +1,17 @@
 <mat-toolbar color="primary">
-    <span>Startups.JO</span>
-    <span class="example-spacer"></span>
-    <button mat-raised-button class="example-icon" [routerLink]="['./request']" >
-      Add Startup
-    </button>
-  </mat-toolbar>
+  <span>Startups.JO</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button class="example-icon" [routerLink]="['./request']" >
+    Add Startup
+  </button>
+</mat-toolbar>
+<div class="container" *ngIf="SectorsData">
+  <div class="sector" *ngFor="let key of objectKeys(SectorsData)">
+    <h2>{{SectorsData[key]!.SectorName}}</h2>
+    <div class="startups">
+      <div class="startup" *ngFor="let startup of SectorsData[key].startups">
+        <img [src]="startup.StartupLogo" alt="">
+        <h3>{{startup.StartupName}}</h3>
+      </div>
+  </div>
+</div>
