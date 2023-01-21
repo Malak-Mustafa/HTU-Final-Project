@@ -9,7 +9,7 @@
   <div class="sector" *ngFor="let key of objectKeys(SectorsData)">
     <h2>{{SectorsData[key]!.SectorName}}</h2>
     <div class="startups">
-      <div class="startup" *ngFor="let startup of SectorsData[key].startups">
+      <div class="startup" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
         <img [src]="startup.StartupLogo" alt="">
         <h3>{{startup.StartupName}}</h3>
       </div>

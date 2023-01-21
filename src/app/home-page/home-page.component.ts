@@ -6,7 +6,7 @@ import { FireStorageService } from '../shared/services/storege/fire-storage.serv
 import { SectorsFirebaseServiceService } from '../shared/services/storege/sectors-firebase-service.service';
 import { StartupFirebaseService } from '../shared/services/storege/startup-firebase.service';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-
+import { StartupDetailsComponent } from './startup-details/startup-details.component';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -60,29 +60,12 @@ export class HomePageComponent {
     }
   }
   openDialog(data:any): void {
-    const dialogRef = this.dialog.open(StartupDialog, {
+    const dialogRef = this.dialog.open(StartupDetailsComponent, {
       data,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
-  }
-}
-
-// =================
-@Component({
-  selector: 'startupDialog',
-  templateUrl: 'startupDialog.html',
-  styleUrls: ['./startupDialog.css']
-})
-export class StartupDialog {
-  constructor(
-    public dialogRef: MatDialogRef<StartupDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }
