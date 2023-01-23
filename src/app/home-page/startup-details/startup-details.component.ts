@@ -10,7 +10,8 @@ export class StartupDetailsComponent {
   constructor(
     public dialogRef: MatDialogRef<StartupDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {}
+  ) {console.log(data);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

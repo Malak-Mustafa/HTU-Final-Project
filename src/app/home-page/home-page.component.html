@@ -7,11 +7,27 @@
 </mat-toolbar>
 <div class="container" *ngIf="SectorsData">
   <div class="sector" *ngFor="let key of objectKeys(SectorsData)">
-    <h2>{{SectorsData[key]!.SectorName}}</h2>
+    <img [src]="SectorsData[key]!.SectorLogo" alt="SectorLogo" class="SectorLogo">
+    <h1 >{{SectorsData[key]!.SectorName | uppercase}}</h1>
+    
     <div class="startups">
-      <div class="startup" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
+      <!-- <div class="startup" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
         <img [src]="startup.StartupLogo" alt="">
         <h3>{{startup.StartupName}}</h3>
+        
+      </div> -->
+      <div class="a-box" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
+        <div class="img-container" >
+         
+            <div class="inner-skew" [ngStyle]="{'background': SectorsData[key]!.sectorDesignColor}">
+              <img [src]="startup.StartupLogo" alt="">
+            </div>
+          </div>
+        
+        <div class="text-container">
+          <h3>{{startup.StartupName}}</h3>
       </div>
   </div>
+</div>
+<mat-divider class="divider"></mat-divider>
 </div>

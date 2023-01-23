@@ -1,3 +1,85 @@
 .example-spacer {
     flex: 1 1 auto;
   }
+  /* .container{
+    gap: 1rem;
+  } */
+  .sector{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    /* gap: 1rem; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .SectorLogo{
+    width: 150px;
+    border-radius: 100%;
+  }
+  .startups{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    gap: 2rem;
+  }
+  .divider{
+    width: 100%;
+  }
+  /* ====================== */
+  .a-box {
+    display: inline-block;
+    width: 240px;
+    text-align: center;
+    transform: scale(0.6);
+  }
+  
+  .img-container {
+      height: 230px;
+      width: 200px;
+      /* overflow: hidden; */
+      border-radius: 0px 0px 20px 20px;
+      display: inline-block;
+  }
+  
+  .img-container img {
+      /* transform: skew(0deg, -13deg); */
+      /* height: 250px; */
+      /* margin: -35px 0px 0px -70px; */
+      max-width: 10rem;
+      /* box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2); */
+  }
+  
+  .inner-skew {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      /* overflow: hidden;
+      padding: 0px; */
+      /* transform: skew(0deg, 13deg); */
+      /* font-size: 0px; */
+      /* margin: 30px 0px 0px 0px; */
+      /* background: transparent; */
+      height: 200px;
+      width: 200px;
+      border: 1px solid;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  }
+  
+  .text-container {
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    padding: 120px 20px 20px 20px;
+    border-radius: 20px;
+    background: #fff;
+    margin: -120px 0px 0px 0px;
+    line-height: 19px;
+    font-size: 14px;
+  }
+  
+  .text-container h3 {
+    margin: 40px 0px 30px 0px;
+    color: #04bcff;
+    font-size: 2rem;
+  }

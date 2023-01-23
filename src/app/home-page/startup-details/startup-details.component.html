@@ -3,13 +3,19 @@
     <div class="img-container">
       <div class="img-inner">
         <div class="inner-skew">
-          <img src="https://images.unsplash.com/photo-1584791097929-aa825fe8e1e1?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ">
+          <img [src]="data.StartupLogo" alt="">
         </div>
       </div>
     </div>
     <div class="text-container">
-      <h3>A blue bird</h3>
+      <h3>{{data.StartupName}}</h3>
       <div>
-        This a demo experiment to skew image container. It looks good.
+        <p class="">Founder Name:{{data.FounderName}}</p>
+    <!-- <p class="">Sector:{{SectorsData[data.SectorID]}}</p> -->
+    <p class="">Year Of Establishment:{{data.YearOfEstablishment}}</p>
+    <p class="">Startup City:{{data.StartupCity}}</p>
+    <p class="">Number Of Employees:{{data.NumberOfEmployees}}</p>
+    <p class="">Email Address:{{data.EmailAddress}}</p>
+    <p class="">URL:{{data.URL}}</p>
     </div>
   </div>
