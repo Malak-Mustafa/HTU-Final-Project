@@ -8,22 +8,34 @@
 
 <div class="container" *ngIf="SectorsData">
   <div class="sector" *ngFor="let key of objectKeys(SectorsData)">
+    <div class="secInfo">
     <img [src]="SectorsData[key]!.SectorLogo" alt="SectorLogo" class="SectorLogo">
     <h1 >{{SectorsData[key]!.SectorName | uppercase}}</h1>
-    
+    </div>
     <div class="startups">
       <!-- <div class="startup" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
         <img [src]="startup.StartupLogo" alt="">
         <h3>{{startup.StartupName}}</h3>
         
       </div> -->
-      <div class="a-box" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
+
+      <div class="startupCard" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)" [ngStyle]="{
+        'box-shadow': ('0px 0px 10px 0px ' + SectorsData[key]!.sectorDesignColor)
+      }">
+        <div class="imgContainer">
+          <img [src]="startup.StartupLogo" alt="">
+        </div>
+        <div class="textContainer">
+          <h3>{{startup.StartupName}}</h3>
+        </div>
+      </div>
+      
+      <!-- <div class="a-box" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
         <div class="img-container" >
             <div class="inner-skew" 
               [ngStyle]="{
                 'box-shadow': ('0px 0px 10px 0px ' + SectorsData[key]!.sectorDesignColor)
               }">
-              <!-- 'border':('1px solid ' + SectorsData[key]!.sectorDesignColor) -->
               <img [src]="startup.StartupLogo" alt="">
             </div>
         </div>
@@ -34,8 +46,8 @@
           }"
         >
           <h3>{{startup.StartupName}}</h3>
-      </div>
-  </div>
+        </div>
+      </div> -->
 </div>
 <mat-divider class="divider"></mat-divider>
 </div>
