@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="nav">
   <span>Startups.JO</span>
   <span class="example-spacer"></span>
   <button mat-raised-button class="example-icon" [routerLink]="['./request']" >
@@ -10,7 +10,7 @@
   <div class="sector" *ngFor="let key of objectKeys(SectorsData)">
     <div class="secInfo">
     <img [src]="SectorsData[key]!.SectorLogo" alt="SectorLogo" class="SectorLogo">
-    <h1 >{{SectorsData[key]!.SectorName | uppercase}}</h1>
+    <h2 class="secName" >{{SectorsData[key]!.SectorName | uppercase}}</h2>
     </div>
     <div class="startups">
       <!-- <div class="startup" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
@@ -19,7 +19,8 @@
         
       </div> -->
 
-      <div class="startupCard" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)" [ngStyle]="{
+      <div class="startupCard" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)" 
+      [ngStyle]="{
         'box-shadow': ('0px 0px 10px 0px ' + SectorsData[key]!.sectorDesignColor)
       }">
         <div class="imgContainer">

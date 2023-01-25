@@ -1,13 +1,22 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-/* .container{
-  gap: 1rem;
-} */
+.nav{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+height: 70px;
+}
+.container{
+margin-top: 80px;
+}
 .secInfo{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+
   gap: 1rem;
 }
 .sector{
@@ -19,13 +28,21 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 100%;
 }
 .SectorLogo{
-  width: 100px;
+  width: 65px;
+}
+.secName{
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0 !important;
 }
 .startups{
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content:center;
   gap: 2rem;
 }
@@ -35,7 +52,7 @@
 /* ====================== */
 .startupCard{
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 7px;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
   width: 230px;
   transform: scale(0.7);
@@ -59,6 +76,7 @@
 }
 .textContainer h3 {
   font-size: 2rem;
-  margin: 1rem 0 0 0;
+  margin: 1rem 0;
   font-weight: 500;
+  color: #444;
 }
