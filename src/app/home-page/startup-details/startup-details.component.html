@@ -1,10 +1,10 @@
 <!-- <p>{{data.StartupName}}</p> -->
 <div class="a-box">
     <div class="img-container">
-      <div class="img-inner">
+    
         <div class="inner-skew">
           <img [src]="data.StartupLogo" alt="">
-        </div>
+
       </div>
     </div>
     <div class="text-container">
@@ -16,6 +16,7 @@
     <p class="">Startup City:{{data.StartupCity}}</p>
     <p class="">Number Of Employees:{{data.NumberOfEmployees}}</p>
     <p class="">Email Address:{{data.EmailAddress}}</p>
-    <p class="">URL:{{data.URL}}</p>
+    <!-- <p class="">URL:{{data.URL}}</p> -->
+    <a mat-stroked-button [href]="data.URL" target="_blank">Go to website</a>
     </div>
   </div>

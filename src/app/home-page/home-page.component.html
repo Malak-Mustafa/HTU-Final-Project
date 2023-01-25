@@ -5,6 +5,7 @@
     Add Startup
   </button>
 </mat-toolbar>
+
 <div class="container" *ngIf="SectorsData">
   <div class="sector" *ngFor="let key of objectKeys(SectorsData)">
     <img [src]="SectorsData[key]!.SectorLogo" alt="SectorLogo" class="SectorLogo">
@@ -18,13 +19,20 @@
       </div> -->
       <div class="a-box" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
         <div class="img-container" >
-         
-            <div class="inner-skew" [ngStyle]="{'background': SectorsData[key]!.sectorDesignColor}">
+            <div class="inner-skew" 
+              [ngStyle]="{
+                'box-shadow': ('0px 0px 10px 0px ' + SectorsData[key]!.sectorDesignColor)
+              }">
+              <!-- 'border':('1px solid ' + SectorsData[key]!.sectorDesignColor) -->
               <img [src]="startup.StartupLogo" alt="">
             </div>
-          </div>
+        </div>
         
-        <div class="text-container">
+        <div class="text-container" 
+          [ngStyle]="{
+            'box-shadow': ('0px 0px 10px 0px ' + SectorsData[key]!.sectorDesignColor)
+          }"
+        >
           <h3>{{startup.StartupName}}</h3>
       </div>
   </div>
