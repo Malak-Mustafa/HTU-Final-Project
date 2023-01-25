@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   animate,
   state,
@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { SectorsFirebaseServiceService } from 'src/app/shared/services/storege/sectors-firebase-service.service';
 import { DataSource } from '@angular/cdk/collections';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-startups-table',
   templateUrl: './startups-table.component.html',
@@ -40,13 +42,25 @@ export class StartupsTableComponent {
     'expand',
   ];
   expandedElement!:startup;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private router: Router,
     private authService: AuthService,
     private startupService: StartupFirebaseService,
     private sectorsService: SectorsFirebaseServiceService
-  ) {
-    
+  ) {}
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
   ngOnInit(): void {
     this.authService.userState$
