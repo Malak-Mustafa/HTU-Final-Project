@@ -14,7 +14,7 @@ import { SectorsFirebaseServiceService } from 'src/app/shared/services/storege/s
 })
 export class UpdateSectorComponent implements OnInit {
   
-  path:string="sector";
+  path:string="sectors";
   downloadUrl? :string;
   id = "";
   constructor(
