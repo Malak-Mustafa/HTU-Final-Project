@@ -55,8 +55,13 @@ export class UpdateSectorComponent implements OnInit {
   }
 
   onSubmit() {
-   
-  this.updateSector(this.id)
+   if(confirm("are you sure to update sector?")){
+    this.updateSector(this.id)
+   }
+   else{alert('update canceled')
+   this.router.navigate(['/admin/dashboard']);
+  }
+  
   }
   updateSector(id:string){
     this.authService.userState$

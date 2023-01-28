@@ -36,7 +36,8 @@ export class AddSectorComponent {
     return this.addSectorForm.get('sectorDesignColor');
   }
   onSubmit() {
-    this.authService.userState$
+    if(confirm("are you sure to add sector?")){
+      this.authService.userState$
       .pipe(
         switchMap((value) => {
           if (value) {
@@ -58,6 +59,11 @@ export class AddSectorComponent {
         }
       });
     this.router.navigate(['/admin/dashboard']);
+     }
+     else{alert('Sector not added')
+     this.router.navigate(['/admin/dashboard']);
+    }
+   
   }
 
   upload(event: Event) {

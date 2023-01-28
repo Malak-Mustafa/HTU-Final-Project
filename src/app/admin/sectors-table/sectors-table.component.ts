@@ -49,7 +49,8 @@ export class SectorsTableComponent implements OnInit {
   }
   deleteSector(id: string) {
     console.log(this.dataSource);
-    this.authService.userState$
+    if(confirm("are you sure to delete sector?")){
+      this.authService.userState$
       .pipe(
         switchMap((value) => {
           if (value) {
@@ -64,6 +65,10 @@ export class SectorsTableComponent implements OnInit {
           alert('sector deleted!');
         }
       });
+     }
+     else{alert('delete sector canceled')
+    }
+    
   }
   addSector() {
     console.log(this.dataSource);

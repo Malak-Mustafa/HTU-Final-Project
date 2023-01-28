@@ -81,7 +81,8 @@ export class AddStartupComponent implements OnInit {
     return this.addStartupForm.get('URL');
   }
   onSubmit() {
-    this.authService.userState$
+    if(confirm("are you sure to add startup?")){
+          this.authService.userState$
       .pipe(
         switchMap((value) => {
           if (value) {
@@ -108,6 +109,11 @@ export class AddStartupComponent implements OnInit {
         }
       });
     this.router.navigate(['/admin/dashboard']);
+     }
+     else{alert('add startup canceled')
+     this.router.navigate(['/admin/dashboard']);
+    }
+
   }
 
   upload(event: Event) {

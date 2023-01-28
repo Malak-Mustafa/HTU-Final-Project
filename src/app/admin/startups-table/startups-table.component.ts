@@ -114,9 +114,9 @@ export class StartupsTableComponent {
     console.log(this.dataSource);
   }
   deleteStartup(id: string) {
-    console.log(this.dataSource);
-
-    this.authService.userState$
+    //console.log(this.dataSource);
+    if(confirm("are you sure to delete startup?")){
+      this.authService.userState$
       .pipe(
         switchMap((value) => {
           if (value) {
@@ -131,6 +131,11 @@ export class StartupsTableComponent {
           alert('startup deleted!');
         }
       });
+     }
+     else{alert('delete startup canceled')
+    }
+
+    
   }
   addStartup() {
     console.log(this.dataSource);

@@ -94,7 +94,13 @@ export class UpdateStartupComponent implements OnInit {
     return this.UpdateStartupForm.get('URL');
   }
 onSubmit(){
-  this.updateStartup(this.id)
+  if(confirm("are you sure to update startup?")){
+      this.updateStartup(this.id)
+   }
+   else{alert('update canceled')
+   this.router.navigate(['/admin/dashboard']);
+  }
+
 }
   updateStartup(id:string){
     this.authService.userState$
