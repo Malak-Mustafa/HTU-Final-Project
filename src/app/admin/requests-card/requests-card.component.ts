@@ -73,10 +73,12 @@ getSectorsData(data:any){
   }
 }
 addStartup(id:string){
-  for (let i = 0; i < this.requests!.length; i++) {
+  
+    for (let i = 0; i < this.requests!.length; i++) {
     // console.log(this.requests![i]);
     if(this.requests![i].id===id){
-    this.authService.userState$
+      if(confirm("are you sure to update sector?")){
+        this.authService.userState$
     .pipe(
       switchMap((value) => {
         if (value) {
@@ -102,18 +104,39 @@ addStartup(id:string){
         alert('cannot add startup');
       }
       else{
-
         alert('request accepted');
-        this.deleteRequest(this.requests![i].id!)} 
+        // this.deleteRequest(this.requests![i].id!)
+        this.authService.userState$
+      .pipe(
+        switchMap((value) => {
+          if (value) {
+            return this.requestsService.deleteRequest(id);
+          } else {
+            return of(null);
+          }
+        })
+      )
+      .subscribe((val) => {
+        if (!val) {
+          console.log('request accepted');
+          
+        }
+      });
+      } 
     });
   this.router.navigate(['/admin/dashboard']);
   }
+  else{alert('update canceled')
+       this.router.navigate(['/admin/dashboard']);
+      }
+       }
   }
 }
   
 
 deleteRequest(id:string){
-  this.authService.userState$
+  if(confirm("are you sure to delete request?")){
+    this.authService.userState$
       .pipe(
         switchMap((value) => {
           if (value) {
@@ -128,6 +151,10 @@ deleteRequest(id:string){
           alert('request deleted!');
         }
       });
+   }
+   else{alert('request not deleted!')
+  }
+
   
 }
 }
