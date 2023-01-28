@@ -13,4 +13,9 @@ export class AuthService {
   signIn(email:string,password:string){
   return this.FireAuth.signInWithEmailAndPassword(email,password);
   }
+  signOut() {
+    return this.FireAuth.signOut().then(() => {
+      alert('Logged out!');
+    });
+  }
 }
