@@ -14,3 +14,8 @@
 .formField{
   min-width: 20rem;
 }
+/* @media only screen and (max-width: 768px) {
+  .formField{
+    max-width: 10rem;
+  }
+} */

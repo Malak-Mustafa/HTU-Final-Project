@@ -1,10 +1,14 @@
 .formSection{
-    height: 100%;
-    width: 100%;
-
+  height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+}
+.section{
+  display: flex;
+  gap: 1rem;
 }
 .requestForm{
     display: flex;

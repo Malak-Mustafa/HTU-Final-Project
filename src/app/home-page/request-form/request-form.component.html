@@ -7,6 +7,7 @@
           [formGroup]="requestForm"
           (ngSubmit)="onSubmit()"
         >
+        <div class="section">
           <mat-form-field>
             <mat-label for="StartupName">StartupName</mat-label>
             <input
@@ -30,6 +31,7 @@
               >StartupCity is required</mat-error
             >
           </mat-form-field>
+          </div>
           <mat-form-field>
           <mat-label>Sector</mat-label>
           <select matNativeControl placeholder="Sector" formControlName="SectorID" required>
@@ -41,6 +43,7 @@
               >Sector is required</mat-error
             >
           </mat-form-field>
+        
           <mat-form-field>
             <mat-label for="FounderName">FounderName</mat-label>
             <input
@@ -52,6 +55,7 @@
               >FounderName is required</mat-error
             >
           </mat-form-field>
+          <div class="section">
           <mat-form-field>
             <mat-label for="NumberOfEmployees">NumberOfEmployees</mat-label>
             <input
@@ -76,6 +80,7 @@
               >YearOfEstablishment is required</mat-error
             >
           </mat-form-field>
+        </div>
           <mat-form-field>
             <mat-label for="URL">URL</mat-label>
             <input
