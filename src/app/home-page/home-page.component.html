@@ -1,13 +1,38 @@
-<mat-toolbar color="primary" class="nav">
+<!-- <mat-toolbar color="primary" class="nav">
   <span>Startups.JO</span>
   <span class="example-spacer"></span>
   <button mat-raised-button class="example-icon" [routerLink]="['./request']" >
     Add Startup
   </button>
-</mat-toolbar>
+</mat-toolbar> -->
+<header>
+  <div class="small" id="header-scroll">
+    <h1><a href="#">Startups.JO</a></h1>
+    <nav>
+      <ul>
+        <li *ngFor="let key of objectKeys(SectorsData)">
+          <a [href]="'#'+ key" class="">{{SectorsData[key]!.SectorName}}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="heroPanel">
+  <video autoplay muted loop id="background-video">
+    <source src="/assets/heroPanel.mp4" type="video/mp4">
+  </video>
+  <div id="heroPanelContent">
+    <h1>Startups.JO</h1>
+    <p>
+      Startups.JO is a platform that aims to connect startups with investors and
+      other stakeholders. It also aims to provide a platform for startups to
+      showcase their products and services.
+    </p>
+  </div>
+</div>
 
 <div class="container" *ngIf="SectorsData">
-  <div class="sector" *ngFor="let key of objectKeys(SectorsData)">
+  <div class="sector" *ngFor="let key of objectKeys(SectorsData)" [id]="key">
     <div class="secInfo">
     <img [src]="SectorsData[key]!.SectorLogo" alt="SectorLogo" class="SectorLogo">
     <h2 class="secName" >{{SectorsData[key]!.SectorName | uppercase}}</h2>
