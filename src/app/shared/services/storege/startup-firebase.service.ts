@@ -16,7 +16,10 @@ export class StartupFirebaseService {
     return from(addeddStartup);
   }
 
-  getStartups (): Observable <startup[]>{
+  getStartups (SectorID: string = ""): Observable <startup[]>{
+    if (SectorID) {
+      return this.fireStore.collection<startup>("startups", ref => ref.where("SectorID", "==", SectorID)).valueChanges({"idField":'id'});
+    }
     return this.startupsCollection.valueChanges({"idField":'id'});
   }
   deleteStartup(id:string){

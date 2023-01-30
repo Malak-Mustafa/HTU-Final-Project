@@ -35,6 +35,9 @@ export class StartupsTableComponent {
   dataSource = new MatTableDataSource<startup>();
   SectorsData?: any;
   SectorName?: string;
+  objectKeys = Object.keys;
+  filterDictionary= new Map<string,string>();
+  JSON=  JSON;
   columnsToDisplay = [ 'StartupName'];
   columnsToDisplayWithExpand = [
     ...this.columnsToDisplay,
@@ -62,7 +65,22 @@ export class StartupsTableComponent {
       this.dataSource.paginator.firstPage();
     }
   }
+  applySecFilter(ob:any) {
+    this.startupService.getStartups(ob.value || "")
+    .subscribe((response) => {
+      if (response) {
+        this.dataSource.data = response;
+      }
+    })
+    // this.filterDictionary.set("SectorID",ob.value);
+    // var jsonString = JSON.stringify(Array.from(this.filterDictionary.entries()));
+    // console.log(jsonString)
+    // console.log(this.filterDictionary)
+    // this.dataSource.filter = jsonString;
+  
+}
   ngOnInit(): void {
+    this.SectorsData = {}
     this.authService.userState$
       .pipe(
         switchMap((val) => {

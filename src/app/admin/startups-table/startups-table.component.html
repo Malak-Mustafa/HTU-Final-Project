@@ -5,10 +5,21 @@
 <div class="SecCont">
   <div class="inner">
 <mat-form-field>
-  <mat-label>Filter</mat-label>
+  <mat-label>Search</mat-label>
   <input matInput (keyup)="applyFilter($event)"  #input>
 </mat-form-field>
 
+<mat-form-field>
+  <mat-label>Sector</mat-label>
+  <select matNativeControl placeholder="Sector"
+  (change)="applySecFilter($event.target)"
+  >
+    <option value="">All</option>
+    <option *ngFor="let key of objectKeys(SectorsData)" [value]="key">
+      {{SectorsData[key]}}
+    </option>
+  </select>
+  </mat-form-field>
 <table mat-table
        [dataSource]="dataSource" multiTemplateDataRows
        class="mat-elevation-z8">
