@@ -18,9 +18,12 @@
 .logo {
   max-width: 100px;
 }
-/* .colortd {
-
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .logo {
+    max-width: 50px;
+  }
+  .mdc-data-table__cell, .mdc-data-table__header-cell {
+    padding: 0px 0px 0px 5px;
 }
-.colorIcon {
-  font-size: 30px;
-} */
+}
