@@ -33,6 +33,7 @@ constructor(private fb :FormBuilder, private auth:AuthService,private router: Ro
       this.router.navigate(['admin/dashboard']);
     }).catch((err)=> {
       console.log(err)
+      alert('wrong email or password please try again')
     });
   }
 }
