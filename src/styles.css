@@ -9,6 +9,7 @@ body {
   align-items: center;
   justify-content: center;*/
   background-color: #f7f7f7;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;

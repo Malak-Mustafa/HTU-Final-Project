@@ -29,6 +29,7 @@ margin-top: 80px;
   align-items: center;
   text-align: center;
   height: 100%;
+  scroll-margin-top: 140px;
 }
 .SectorLogo{
   width: 65px;
