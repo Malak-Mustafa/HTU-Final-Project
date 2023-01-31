@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div class="container" *ngIf="SectorsData">
+<div class="container" #pdfTable *ngIf="SectorsData">
   <div class="sector" *ngFor="let key of objectKeys(SectorsData)" [id]="key">
     <div class="secInfo">
     <img [src]="SectorsData[key]!.SectorLogo" alt="SectorLogo" class="SectorLogo">
@@ -61,12 +61,12 @@
     <div class="footerLogo">
       <img src="/assets/logo-w-t-c.png" alt="">
     </div>
-    <div>
+    <div class="socialLinksContainer">
       <span>
         Share this page on:
       </span>
       <div class="socialLinks">
-        <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fcapstonproject-772f0.web.app%2F">
+        <a target="_blank" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fcapstonproject-772f0.web.app%2F">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="30" height="30"
             viewBox="0,0,256,256"
@@ -74,7 +74,7 @@
             <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M15,3c-6.627,0 -12,5.373 -12,12c0,6.016 4.432,10.984 10.206,11.852v-8.672h-2.969v-3.154h2.969v-2.099c0,-3.475 1.693,-5 4.581,-5c1.383,0 2.115,0.103 2.461,0.149v2.753h-1.97c-1.226,0 -1.654,1.163 -1.654,2.473v1.724h3.593l-0.487,3.154h-3.106v8.697c5.857,-0.794 10.376,-5.802 10.376,-11.877c0,-6.627 -5.373,-12 -12,-12z"></path></g></g>
           </svg>
         </a>
-        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcapstonproject-772f0.web.app%2F&text=Startups.JO%20is%20a%20platform%20that%20aims%20to%20connect%20startups%20with%20investors%20and%20other%20stakeholders.">
+        <a target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcapstonproject-772f0.web.app%2F&text=Startups.JO%20is%20a%20platform%20that%20aims%20to%20connect%20startups%20with%20investors%20and%20other%20stakeholders.">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="30" height="30"
             viewBox="0,0,256,256"
@@ -82,7 +82,7 @@
             <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M15,3c-6.627,0 -12,5.373 -12,12c0,6.627 5.373,12 12,12c6.627,0 12,-5.373 12,-12c0,-6.627 -5.373,-12 -12,-12zM21.464,12.535c0.006,0.133 0.009,0.265 0.009,0.397c0,4.068 -3.095,8.756 -8.756,8.756c-1.739,0 -3.356,-0.509 -4.717,-1.383c0.241,0.029 0.486,0.042 0.735,0.042c1.443,0 2.769,-0.491 3.821,-1.318c-1.347,-0.025 -2.484,-0.915 -2.875,-2.137c0.188,0.036 0.381,0.055 0.579,0.055c0.281,0 0.554,-0.038 0.811,-0.108c-1.408,-0.282 -2.469,-1.526 -2.469,-3.017c0,-0.013 0,-0.026 0,-0.039c0.415,0.231 0.889,0.369 1.394,0.385c-0.825,-0.551 -1.369,-1.494 -1.369,-2.561c0,-0.565 0.151,-1.094 0.416,-1.547c1.518,1.862 3.786,3.088 6.343,3.216c-0.052,-0.225 -0.079,-0.46 -0.079,-0.701c0,-1.699 1.378,-3.078 3.077,-3.078c0.885,0 1.685,0.374 2.246,0.972c0.701,-0.139 1.36,-0.394 1.955,-0.747c-0.23,0.719 -0.718,1.321 -1.354,1.703c0.622,-0.074 1.215,-0.239 1.768,-0.484c-0.411,0.618 -0.932,1.159 -1.535,1.594z"></path></g></g>
           </svg>
         </a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/&url=https%3A%2F%2Fcapstonproject-772f0.web.app%2F">
+        <a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/&url=https%3A%2F%2Fcapstonproject-772f0.web.app%2F">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="30" height="30"
             viewBox="0,0,256,256"
@@ -91,6 +91,14 @@
           </svg>
         </a>
       </div>
+      <button mat-raised-button  (click)="downloadAsPDF()">
+        Download as PDF
+      </button>
     </div>
+    <!-- copy right and powered py -->
+  </div>
+  <div class="copy-right">
+    <p>© 2023 Startups.JO All rights reserved.</p>
+    <p>Powered by <a target="_blank" href="https://www.linkedin.com/in/malak-mustafa/">Malak Mustafa</a></p>
   </div>
 </footer>
