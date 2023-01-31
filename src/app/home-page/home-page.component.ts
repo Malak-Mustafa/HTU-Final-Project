@@ -75,17 +75,17 @@ export class HomePageComponent {
   @HostListener('window:scroll', ['$event.target']) // for window scroll events
   scroll(e: any) {
     let scroll = e.scrollingElement.scrollTop;
-    console.log("this is the scroll position", scroll)
+    // console.log("this is the scroll position", scroll)
     if (scroll > 100) {
       this.headerBg = true
     } else {
       this.headerBg = false
     }
     if (scroll > this.currentPosition) {
-      console.log("scrollDown");
+      // console.log("scrollDown");
       this.showNav = false
     } else {
-      console.log("scrollUp");
+      // console.log("scrollUp");
       this.showNav = true
     }
     this.currentPosition = scroll;
