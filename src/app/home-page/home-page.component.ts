@@ -7,14 +7,14 @@ import { SectorsFirebaseServiceService } from '../shared/services/storege/sector
 import { StartupFirebaseService } from '../shared/services/storege/startup-firebase.service';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { StartupDetailsComponent } from './startup-details/startup-details.component';
-import { ElementRef, ViewChild } from '@angular/core';
+// import { ElementRef, ViewChild } from '@angular/core';
 
-declare var require: any;
+// declare var require: any;
 
-import * as pdfMake from "pdfmake/build/pdfmake";
-import * as pdfFonts from "pdfmake/build/vfs_fonts";
-const htmlToPdfmake = require("html-to-pdfmake");
-(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+// import * as pdfMake from "pdfmake/build/pdfmake";
+// import * as pdfFonts from "pdfmake/build/vfs_fonts";
+// const htmlToPdfmake = require("html-to-pdfmake");
+// (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -42,17 +42,17 @@ export class HomePageComponent {
       }
     });  
   }
-  @ViewChild('pdfTable')
-  pdfTable!: ElementRef;
+  // @ViewChild('pdfTable')
+  // pdfTable!: ElementRef;
   
-  public downloadAsPDF() {
-    const pdfTable = this.pdfTable.nativeElement;
-    console.log(pdfTable.innerHTML)
-    var html = htmlToPdfmake(pdfTable.innerHTML);
-    const documentDefinition = { content: html };
-    pdfMake.createPdf(documentDefinition).download(); 
+  // public downloadAsPDF() {
+  //   const pdfTable = this.pdfTable.nativeElement;
+  //   console.log(pdfTable.innerHTML)
+  //   var html = htmlToPdfmake(pdfTable.innerHTML);
+  //   const documentDefinition = { content: html };
+  //   pdfMake.createPdf(documentDefinition).download(); 
      
-  }
+  // }
   getSectorsData(data:any){
     this.SectorsData = {}
     for (let i = 0; i < data.length; i++) {
