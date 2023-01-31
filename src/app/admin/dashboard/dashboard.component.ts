@@ -10,7 +10,9 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class DashboardComponent {
 constructor(public authService :AuthService,private router: Router){}
 logout(){
+  if(confirm("Are you sure to log out?")){
   this.authService.signOut().then(() => this.router.navigate(['/auth/login']));
+  }
 }
 }
 

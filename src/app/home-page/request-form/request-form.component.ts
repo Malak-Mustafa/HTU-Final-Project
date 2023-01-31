@@ -96,6 +96,7 @@ export class RequestFormComponent {
               EmailAddress:  this.EmailAddress?.value+ '',
             });
           } else {
+            
             return of(null);
           }
         })
@@ -105,6 +106,7 @@ export class RequestFormComponent {
           alert('cannot add startup');
         }
       });
+      alert("Your request has been sent")
     this.router.navigate(['/']);
   }
 

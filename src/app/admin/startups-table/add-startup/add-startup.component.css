@@ -20,3 +20,8 @@
 img{
     max-width: 150px;
   }
+  @media only screen and (max-width: 768px) {
+    .section{
+     flex-direction: column;
+    }
+  }
