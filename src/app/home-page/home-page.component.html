@@ -39,9 +39,10 @@
   </div>
 </header> -->
 <div class="heroPanel">
-  <video autoplay muted loop id="background-video">
+  <video playsinline="" src="https://firebasestorage.googleapis.com/v0/b/capstonproject-772f0.appspot.com/o/heroPanel.mp4?alt=media" loop="loop" autoplay="autoplay" muted="muted" id="background-video"></video>
+  <!-- <video autoplay muted loop id="background-video">
     <source src="https://firebasestorage.googleapis.com/v0/b/capstonproject-772f0.appspot.com/o/heroPanel.mp4?alt=media" type="video/mp4">
-  </video>
+  </video> -->
   <div id="heroPanelContent">
     <h1>Startups.JO</h1>
     <p>
@@ -58,12 +59,6 @@
     <h2 class="secName" >{{SectorsData[key]!.SectorName | uppercase}}</h2>
     </div>
     <div class="startups">
-      <!-- <div class="startup" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
-        <img [src]="startup.StartupLogo" alt="">
-        <h3>{{startup.StartupName}}</h3>
-        
-      </div> -->
-
       <div class="startupCard" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)" 
       [ngStyle]="{
         'box-shadow': ('0px 0px 10px 0px ' + SectorsData[key]!.sectorDesignColor)
@@ -75,25 +70,6 @@
           <h3>{{startup.StartupName}}</h3>
         </div>
       </div>
-      
-      <!-- <div class="a-box" *ngFor="let startup of SectorsData[key].startups" (click)="openDialog(startup)">
-        <div class="img-container" >
-            <div class="inner-skew" 
-              [ngStyle]="{
-                'box-shadow': ('0px 0px 10px 0px ' + SectorsData[key]!.sectorDesignColor)
-              }">
-              <img [src]="startup.StartupLogo" alt="">
-            </div>
-        </div>
-        
-        <div class="text-container" 
-          [ngStyle]="{
-            'box-shadow': ('0px 0px 10px 0px ' + SectorsData[key]!.sectorDesignColor)
-          }"
-        >
-          <h3>{{startup.StartupName}}</h3>
-        </div>
-      </div> -->
 </div>
 <mat-divider class="divider"></mat-divider>
 </div>
