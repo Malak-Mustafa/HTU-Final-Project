@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { of, switchMap,Observable } from 'rxjs';
 import { sector } from '../shared/interfaces/sector';
@@ -16,6 +16,8 @@ export class HomePageComponent {
   objectKeys = Object.keys;
   dataSource?:any;
   SectorsData?: any;
+  showNav = true
+  headerBg = false
   // SectorName?: string;
   constructor( private router: Router,
     private startupsService: StartupFirebaseService,
@@ -67,5 +69,25 @@ export class HomePageComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+  // ===========
+  currentPosition = window.pageYOffset;
+  @HostListener('window:scroll', ['$event.target']) // for window scroll events
+  scroll(e: any) {
+    let scroll = e.scrollingElement.scrollTop;
+    console.log("this is the scroll position", scroll)
+    if (scroll > 100) {
+      this.headerBg = true
+    } else {
+      this.headerBg = false
+    }
+    if (scroll > this.currentPosition) {
+      console.log("scrollDown");
+      this.showNav = false
+    } else {
+      console.log("scrollUp");
+      this.showNav = true
+    }
+    this.currentPosition = scroll;
   }
 }
