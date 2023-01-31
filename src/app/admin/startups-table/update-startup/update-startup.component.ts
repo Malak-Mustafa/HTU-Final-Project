@@ -126,7 +126,7 @@ onSubmit(){
     )
     .subscribe((val) => {
       if (!val) {
-        alert('sector updated');
+        alert('startup updated');
       }
     });
   this.router.navigate(['/admin/dashboard']);
