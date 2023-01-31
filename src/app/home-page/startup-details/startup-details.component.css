@@ -38,10 +38,17 @@
   margin: -120px 0px 0px 0px;
   line-height: 19px;
   font-size: 14px;
+  color: #444;
+}
+.text-container p {
+  text-align: left;
+}
+.text-container .info {
+  margin-left: 1rem;
 }
 .text-container h3 {
   /* margin: 40px 0px 30px 0px; */
-  color: #171d1f;
+  color: #444;
   font-size: 2rem;
 }
 @media only screen and (max-width: 768px) {

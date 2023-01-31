@@ -10,12 +10,12 @@
     </div>
     <div class="text-container">
       <h3>{{data.StartupName}}</h3>
-      <div>
+      <div class="info">
         <p class=""><strong>Founder Name:</strong> {{data.FounderName}}</p>
-    <p class=""><strong>Year Of Establishment:</strong>{{data.YearOfEstablishment}}</p>
-    <p class=""><strong>Startup City:</strong>{{data.StartupCity}}</p>
-    <p class=""><strong>Number Of Employees:</strong>{{data.NumberOfEmployees}}</p>
-    <p class=""><strong>Email Address:</strong>{{data.EmailAddress}}</p>
-    <a mat-raised-button [href]="data.URL" target="_blank">Go to website</a>
+    <p class=""><strong>Year Of Establishment: </strong>{{data.YearOfEstablishment}}</p>
+    <p class=""><strong>Startup City: </strong>{{data.StartupCity}}</p>
+    <p class=""><strong>Number Of Employees: </strong>{{data.NumberOfEmployees}}</p>
+    <p class=""><strong>Email Address: </strong>{{data.EmailAddress}}</p>
+    <a mat-stroked-button color="primary" [href]="data.URL" target="_blank">Go to website</a>
     </div>
   </div>
